@@ -11,11 +11,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * First screen of the application. Displayed after the application is created.
  */
 public class FirstScreen extends ScreenAdapter {
-	
+
 	private final Rocket rocket;
 	private final Batch batch;
 	private final BitmapFont bitmapFont;
-	
+
 	public FirstScreen() {
 		rocket = new Rocket();
 		batch = new SpriteBatch();
@@ -26,7 +26,7 @@ public class FirstScreen extends ScreenAdapter {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0.3f, 0.3f, 0.3f, 1f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		batch.begin();
 		rocket.draw(batch, delta);
 		String strFps = "FPS: " + String.valueOf(Gdx.graphics.getFramesPerSecond());
