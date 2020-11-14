@@ -18,15 +18,17 @@ public class FirstScreen extends ScreenAdapter {
 	private final Batch batch;
 	private final BitmapFont bitmapFont;
 	private final Texture texture;
-	private final Sprite sprite;
+	private final Sprite skySprite;
+	private float skyOffset = 0f;
 
 	public FirstScreen() {
 		rocket = new Rocket();
 		batch = new SpriteBatch();
 		bitmapFont = new BitmapFont();
 		texture = new Texture("sky.png");
-		sprite = new Sprite(texture);
-		sprite.flip(true, true);
+
+		skySprite = new Sprite(texture);
+		skySprite.flip(true, true);
 	}
 
 	@Override
@@ -36,11 +38,23 @@ public class FirstScreen extends ScreenAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		batch.draw(sprite, 0f, 0f, texture.getWidth() * 5, texture.getHeight() * 5);
+		renderBackground(delta);
 		rocket.draw(batch, delta);
 		String strFps = "FPS: " + String.valueOf(Gdx.graphics.getFramesPerSecond());
 		bitmapFont.draw(batch, strFps, 0f, Gdx.graphics.getHeight());
 		batch.end();
+	}
+
+	private void renderBackground(float delta) {
+		skyOffset += 55f * delta;
+
+		if ((int)skyOffset / Gdx.graphics.getHeight() == 1) {
+			skyOffset = 0f;
+		}
+
+		batch.draw(skySprite, 0f, -skyOffset, texture.getWidth() * 5, texture.getHeight() * 5);
+		batch.draw(skySprite, 0f, -skyOffset + Gdx.graphics.getHeight(), texture.getWidth() * 5,
+				texture.getHeight() * 5);
 	}
 
 	@Override

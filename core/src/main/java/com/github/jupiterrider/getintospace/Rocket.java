@@ -18,25 +18,24 @@ public class Rocket {
 	private static final TextureRegion ON_TEXTURE_REGION = new TextureRegion(TEXTURE, 0, TEXTURE.getHeight() / 2,
 			TEXTURE.getWidth(), TEXTURE.getHeight() / 2);
 
-	private static final Vector2 POSITION = new Vector2(Gdx.graphics.getWidth() / 2f - TEXTURE.getWidth() * 2.5f, 0f);
-
 	private static final float SPEED_MAX = 500f;
 	private static final float SPEED_MULTIPLIER = 500f;
-
+	
+	private final Vector2 position = new Vector2(Gdx.graphics.getWidth() / 2f - TEXTURE.getWidth() * 2.5f, 0f);
 	private float velocity = 0f;
 
 	public void draw(Batch batch, float delta) {
 		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
 			velocity += SPEED_MULTIPLIER * delta;
 			velocity = MathUtils.clamp(velocity, -SPEED_MAX, SPEED_MAX);
-			POSITION.mulAdd(new Vector2(0f, velocity), delta);
-			batch.draw(ON_TEXTURE_REGION, POSITION.x, POSITION.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
+			position.mulAdd(new Vector2(0f, velocity), delta);
+			batch.draw(ON_TEXTURE_REGION, position.x, position.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
 					ON_TEXTURE_REGION.getRegionHeight() * 5);
 		} else {
 			velocity -= SPEED_MULTIPLIER * delta;
 			velocity = MathUtils.clamp(velocity, -SPEED_MAX, SPEED_MAX);
-			POSITION.mulAdd(new Vector2(0f, velocity), delta);
-			batch.draw(OFF_TEXTURE_REGION, POSITION.x, POSITION.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
+			position.mulAdd(new Vector2(0f, velocity), delta);
+			batch.draw(OFF_TEXTURE_REGION, position.x, position.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
 					ON_TEXTURE_REGION.getRegionHeight() * 5);
 		}
 	}
