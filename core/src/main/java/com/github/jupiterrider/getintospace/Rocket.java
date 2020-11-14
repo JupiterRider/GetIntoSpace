@@ -10,38 +10,38 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Rocket {
 
-	private final static Texture rocketTexture = new Texture("saturn5.png");
+	private static final Texture TEXTURE = new Texture("saturn5.png");
 
-	private final static TextureRegion rocktOffTextureRegion = new TextureRegion(rocketTexture, 0, 0,
-			rocketTexture.getWidth(), rocketTexture.getHeight() / 2);
+	private static final TextureRegion OFF_TEXTURE_REGION = new TextureRegion(TEXTURE, 0, 0, TEXTURE.getWidth(),
+			TEXTURE.getHeight() / 2);
 
-	private final static TextureRegion rocktOnTextureRegion = new TextureRegion(rocketTexture, 0,
-			rocketTexture.getHeight() / 2, rocketTexture.getWidth(), rocketTexture.getHeight() / 2);
+	private static final TextureRegion ON_TEXTURE_REGION = new TextureRegion(TEXTURE, 0, TEXTURE.getHeight() / 2,
+			TEXTURE.getWidth(), TEXTURE.getHeight() / 2);
 
-	private final static Vector2 position = new Vector2(Gdx.graphics.getWidth() / 2f - rocketTexture.getWidth() * 2.5f, 0f);
-	
-	private final static float speedMax = 500f;
-	private final static float speedMultiplier = 500f;
-	
+	private static final Vector2 POSITION = new Vector2(Gdx.graphics.getWidth() / 2f - TEXTURE.getWidth() * 2.5f, 0f);
+
+	private static final float SPEED_MAX = 500f;
+	private static final float SPEED_MULTIPLIER = 500f;
+
 	private float velocity = 0f;
-	
+
 	public void draw(Batch batch, float delta) {
 		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-			velocity += speedMultiplier * delta;
-			velocity = MathUtils.clamp(velocity, -speedMax, speedMax);
-			position.mulAdd(new Vector2(0f, velocity), delta);
-			batch.draw(rocktOnTextureRegion, position.x, position.y, rocktOnTextureRegion.getRegionWidth() * 5,
-					rocktOnTextureRegion.getRegionHeight() * 5);
+			velocity += SPEED_MULTIPLIER * delta;
+			velocity = MathUtils.clamp(velocity, -SPEED_MAX, SPEED_MAX);
+			POSITION.mulAdd(new Vector2(0f, velocity), delta);
+			batch.draw(ON_TEXTURE_REGION, POSITION.x, POSITION.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
+					ON_TEXTURE_REGION.getRegionHeight() * 5);
 		} else {
-			velocity -= speedMultiplier * delta;
-			velocity = MathUtils.clamp(velocity, -speedMax, speedMax);
-			position.mulAdd(new Vector2(0f, velocity), delta);
-			batch.draw(rocktOffTextureRegion, position.x, position.y, rocktOnTextureRegion.getRegionWidth() * 5,
-					rocktOnTextureRegion.getRegionHeight() * 5);
+			velocity -= SPEED_MULTIPLIER * delta;
+			velocity = MathUtils.clamp(velocity, -SPEED_MAX, SPEED_MAX);
+			POSITION.mulAdd(new Vector2(0f, velocity), delta);
+			batch.draw(OFF_TEXTURE_REGION, POSITION.x, POSITION.y, ON_TEXTURE_REGION.getRegionWidth() * 5,
+					ON_TEXTURE_REGION.getRegionHeight() * 5);
 		}
 	}
 
-	public void dispose() {
-		rocketTexture.dispose();
+	public static final void dispose() {
+		TEXTURE.dispose();
 	}
 }
