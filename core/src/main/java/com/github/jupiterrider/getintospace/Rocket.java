@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Rocket {
@@ -24,6 +25,8 @@ public class Rocket {
 	
 	private final Vector2 position = new Vector2(Gdx.graphics.getWidth() / 2f - TEXTURE.getWidth() * 2.5f, 0f);
 	private float velocity = 0f;
+	
+	private final Rectangle rectangle = new Rectangle();
 
 	public void draw(Batch batch, float delta, Camera camera) {
 		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
@@ -42,6 +45,12 @@ public class Rocket {
 
 		camera.position.set(position.x + TEXTURE.getWidth() * 2.5f, position.y + TEXTURE.getHeight() * 1.25f, 0f);
 		camera.update();
+		
+		rectangle.set(position.x, position.y, TEXTURE.getWidth() * 5, TEXTURE.getHeight() * 2.5f);
+	}
+
+	public Rectangle getRectangle() {
+		return rectangle;
 	}
 
 	public static final void dispose() {
