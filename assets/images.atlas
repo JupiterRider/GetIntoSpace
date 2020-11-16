@@ -1,0 +1,27 @@
+
+images.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+saturn5off
+  rotate: false
+  xy: 2, 2
+  size: 10, 32
+  orig: 10, 32
+  offset: 0, 0
+  index: -1
+saturn5on
+  rotate: false
+  xy: 76, 132
+  size: 10, 32
+  orig: 10, 32
+  offset: 0, 0
+  index: -1
+sky
+  rotate: false
+  xy: 2, 36
+  size: 72, 128
+  orig: 72, 128
+  offset: 0, 0
+  index: -1
