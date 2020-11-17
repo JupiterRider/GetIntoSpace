@@ -12,12 +12,14 @@ public class MainScreen extends ScreenAdapter {
 	private Background background;
 	private SaturnFive saturnFive;
 	private Hud hud;
+	private Asteroid asteroid;
 
 	public MainScreen() {
 		batch = new SpriteBatch();
 		background = new Background();
 		saturnFive = new SaturnFive();
 		hud = new Hud();
+		asteroid = new Asteroid();
 	}
 
 	@Override
@@ -29,7 +31,14 @@ public class MainScreen extends ScreenAdapter {
 		background.draw(batch, delta);
 		saturnFive.draw(batch, delta);
 		hud.draw(batch, delta);
+		asteroid.draw(batch, delta);
 		batch.end();
+
+		if (saturnFive.getRectangle().overlaps(asteroid.getRectangle())) {
+			saturnFive.reset();
+			hud.reset();
+			asteroid.reset(true);
+		}
 	}
 
 	@Override
