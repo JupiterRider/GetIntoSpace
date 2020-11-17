@@ -19,5 +19,5 @@ Download the latest .jar file from the [releases tab](https://github.com/Jupiter
 The game was made with [libGDX](https://libgdx.com/) using tommyettinger's [gdx-liftoff](https://github.com/tommyettinger/gdx-liftoff).
 
 ## Copyright Assets:
-- The assets in `tree/main/assets` are CC0 (Creative Commons Zero) created by JupiterRider.
+- The files in `assets` are CC0 (Creative Commons Zero) created by JupiterRider.
 - The images in `lwjgl3/src/main/resources` are from [gdx-liftoff](https://github.com/tommyettinger/gdx-liftoff).
