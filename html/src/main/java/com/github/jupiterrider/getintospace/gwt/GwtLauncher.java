@@ -9,10 +9,7 @@ import com.github.jupiterrider.getintospace.GetIntoSpace;
 public class GwtLauncher extends GwtApplication {
 		@Override
 		public GwtApplicationConfiguration getConfig () {
-			// Resizable application, uses available space in browser
-			return new GwtApplicationConfiguration(true);
-			// Fixed size application:
-			//return new GwtApplicationConfiguration(480, 320);
+			return new GwtApplicationConfiguration(360, 640);
 		}
 
 		@Override

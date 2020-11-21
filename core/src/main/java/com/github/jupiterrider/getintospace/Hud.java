@@ -17,7 +17,7 @@ public class Hud {
 		time += delta;
 		String strTime = "Survived: " + String.valueOf((long) time) + "sec";
 		String strFps = "FPS: " + String.valueOf(Gdx.graphics.getFramesPerSecond());
-		bitmapFont.draw(batch, strFps + System.lineSeparator() + strTime, 0f, Gdx.graphics.getHeight());
+		bitmapFont.draw(batch, strFps + "\r\n" + strTime, 0f, Gdx.graphics.getHeight());
 	}
 	
 	public void reset() {
