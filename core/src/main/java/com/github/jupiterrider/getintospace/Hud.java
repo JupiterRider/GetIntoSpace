@@ -7,23 +7,35 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class Hud {
 
 	private BitmapFont bitmapFont;
-	private float time = 0f;
+	private float currentScore = 0f;
+	private float lastScore = 0f;
+	private float bestScore = 0f;
 
 	public Hud() {
 		bitmapFont = new BitmapFont();
 	}
 
 	public void draw(Batch batch, float delta) {
-		time += delta;
-		String strTime = "Survived: " + String.valueOf((long) time) + "sec";
+		currentScore += delta;
 		String strFps = "FPS: " + String.valueOf(Gdx.graphics.getFramesPerSecond());
-		bitmapFont.draw(batch, strFps + "\r\n" + strTime, 0f, Gdx.graphics.getHeight());
+		String strCurrentScore = "Current score: " + String.valueOf((long) currentScore) + "sec";
+		String strLastScore = "Last score: " + String.valueOf((long) lastScore) + "sec";
+		String strBestScore = "Best score: " + String.valueOf((long) bestScore) + "sec";
+
+		String text = strFps + "\r\n" + strCurrentScore + "\r\n" + strLastScore + "\r\n" + strBestScore;
+		bitmapFont.draw(batch, text, 0f, Gdx.graphics.getHeight());
 	}
-	
+
 	public void reset() {
-		time = 0f;
+		lastScore = currentScore;
+
+		if (lastScore > bestScore) {
+			bestScore = lastScore;
+		}
+
+		currentScore = 0f;
 	}
-	
+
 	public void dispose() {
 		bitmapFont.dispose();
 	}
