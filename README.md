@@ -2,7 +2,6 @@
 
 ## Controls:
 - <b>A/D</b> or <b>Left/Right</b> to move sideways
-- <b>W</b>, <b>Space</b> or <b>Up</b> to accelerate
 - <b>ESC</b> to quit
 
 ## Gameplay:
